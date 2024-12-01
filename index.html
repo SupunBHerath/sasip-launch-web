@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Launch Sasip.lk</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: #0d0a29; 
+      color: white;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+    }
+
+    .container {
+      text-align: center;
+      z-index: 2;
+    }
+
+    h1 {
+      font-weight: 900;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #FF0B15; 
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: #ffffff;
+      opacity: 0.9;
+      animation: fadeIn 2s ease-out;
+    }
+
+    .launch-btn {
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #0f4c81;
+      background-color: #eeeeee;
+      border: none;
+      border-radius: 30px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+
+    .launch-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 20px rgba(2, 83, 198, 0.5); 
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Ripple Animation */
+    .ripple {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(137, 1, 112, 0.821) 0%, rgba(15, 76, 129, 0) 70%);
+      border-radius: 50%;
+      animation: rippleEffect 5s infinite;
+    }
+
+    .ripple:nth-child(1) {
+      animation-delay: 0s;
+      left: 20%;
+      top: 30%;
+    }
+
+    .ripple:nth-child(2) {
+      animation-delay: 1s;
+      left: 60%;
+      top: 70%;
+    }
+
+    .ripple:nth-child(3) {
+      animation-delay: 2s;
+      left: 50%;
+      top: 50%;
+    }
+
+    @keyframes rippleEffect {
+      0% {
+        transform: scale(0.8);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(3);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Ripple Background -->
+  <div class="ripple"></div>
+  <div class="ripple"></div>
+  <div class="ripple"></div>
+  <div class="ripple"></div>
+
+  <!-- Content -->
+  <div class="container">
+    <h1>WELCOME TO <br> THE LAUNCH OF SASIP.LK</h1>
+    <p>Click below to launch the website</p>
+    <button class="launch-btn" onclick="launchSite()">Launch Sasip.lk Web</button>
+  </div>
+
+  <script>
+    function launchSite() {
+      setTimeout(() => {
+        window.location.href = "https://sasip.lk";
+      }, 500); 
+    }
+  </script>
+</body>
+</html>
