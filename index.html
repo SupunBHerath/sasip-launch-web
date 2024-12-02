@@ -50,8 +50,12 @@
       border-radius: 30px;
       text-transform: uppercase;
       cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: pulse 2s infinite;
+      position: relative;
+      overflow: hidden;
+      display: inline-flex; /* Ensures proper alignment */
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto; /* Centers the button horizontally */
     }
 
     .launch-btn:hover {
@@ -59,15 +63,35 @@
       box-shadow: 0 10px 20px rgba(2, 83, 198, 0.5); 
     }
 
+    .launch-btn.loading {
+      color: transparent;
+      pointer-events: none;
+    }
+
+    .launch-btn.loading::after {
+      content: '';
+      width: 25px;
+      height: 25px;
+      border: 4px solid transparent;
+      border-top-color: #0f4c81;
+      border-radius: 50%;
+      animation: spinner 0.8s linear infinite;
+      position: absolute;
+    }
+
+    @keyframes spinner {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
     /* Animations */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
     }
 
     /* Ripple Animation */
@@ -121,14 +145,15 @@
   <div class="container">
     <h1>WELCOME TO <br> THE LAUNCH OF SASIP.LK</h1>
     <p>Click below to launch the website</p>
-    <button class="launch-btn" onclick="launchSite()">Launch Sasip.lk Web</button>
+    <button class="launch-btn" onclick="launchSite(this)">Launch Sasip.lk Web</button>
   </div>
 
   <script>
-    function launchSite() {
+    function launchSite(button) {
+      button.classList.add('loading');
       setTimeout(() => {
         window.location.href = "https://sasip.lk";
-      }, 500); 
+      }, 2000); // Simulate a delay before redirecting
     }
   </script>
 </body>
